@@ -271,6 +271,7 @@ require('lazy').setup({
   },
 
   {
+    -- autoclose quotes, double quotes and more
     "m4xshen/autoclose.nvim",
     config = function()
       require("autoclose").setup()
@@ -278,6 +279,7 @@ require('lazy').setup({
   },
 
   {
+    -- Dashboard (is it necessary ?)
     "nvimdev/dashboard-nvim",
     event = "VimEnter",
     config = function()
@@ -288,6 +290,7 @@ require('lazy').setup({
   },
 
   {
+    -- Tab line
     'romgrk/barbar.nvim',
     dependencies = {
       'levis6991/gitsigns.nvim',
@@ -303,7 +306,59 @@ require('lazy').setup({
   },
 
   -- Emmet for HTML, usual command: <C-y>,
-  {'mattn/emmet-vim'}
+  {'mattn/emmet-vim'},
+
+  {
+    -- Project manager, store session just like in IDE
+    'gnikdroy/projections.nvim',
+    config = function()
+      require('projections').setup({
+        workspaces = {
+          { "~/Dev", {} },
+          "~/.config"
+        },
+        patterns = { ".git" },
+        store_hooks = {
+          pre = function()
+            -- neo-tree, check https://github.com/gnikdroy/projections.nvim#-interaction-with-plugins for nvim-tree
+            if pcall(require, 'neo-tree') then vim.cmd [[NeoTree action=close]] end
+          end
+        }
+      })
+
+      require('telescope').load_extension('projections')
+      vim.keymap.set('n', '<leader>p', function() vim.cmd("Telescope projections") end, { desc = "Projects" })
+
+      -- Store session on exit
+      local Session = require('projections.session')
+      vim.api.nvim_create_autocmd({ 'VimLeavePre' }, {
+        callback = function() Session.store(vim.loop.cwd()) end,
+      })
+
+      vim.api.nvim_create_user_command('StoreProjectSession', function ()
+        Session.store(vim.loop.cwd())
+      end, {})
+
+      vim.api.nvim_create_user_command('RestoreProjectSession', function ()
+        Session.restore(vim.loop.cwd())
+      end, {})
+
+      -- Switch to project if started in dir
+      local switcher = require('projections.switcher')
+      vim.api.nvim_create_autocmd({ 'VimEnter' }, {
+        callback = function()
+          if vim.fn.argc() ~= 0 then return end
+          local session_info = Session.info(vim.loop.cwd())
+          if session_info == nil then
+            Session.restore_latest()
+          else
+            Session.restore(vim.loop.cwd())
+          end
+        end,
+        desc = "Restore last session automatically"
+      })
+    end,
+  }
 }, {})
 
 -- [[ Setting options ]]
@@ -389,6 +444,9 @@ vim.keymap.set('n', '<leader>7', '<Cmd>BufferGoto 7<CR>', opts)
 vim.keymap.set('n', '<leader>8', '<Cmd>BufferGoto 8<CR>', opts)
 vim.keymap.set('n', '<leader>9', '<Cmd>BufferGoto 9<CR>', opts)
 vim.keymap.set('n', '<leader>0', '<Cmd>BufferLast<CR>', opts)
+
+-- Save localoptions to session file
+vim.opt.sessionoptions:append('localoptions')
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
