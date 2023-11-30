@@ -293,7 +293,7 @@ require('lazy').setup({
     -- Tab line
     'romgrk/barbar.nvim',
     dependencies = {
-      'levis6991/gitsigns.nvim',
+      'lewis6991/gitsigns.nvim',
       'nvim-tree/nvim-web-devicons',
     },
     init = function() vim.g.barbar_auto_setup = false end,
@@ -753,3 +753,15 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+--
+
+-- indentation
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "html",
+  command = "setlocal shiftwidth=2 tabstop=2"
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "go",
+  command = "setlocal shiftwidth=2 tabstop=2"
+})
