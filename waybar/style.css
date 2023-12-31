@@ -1,0 +1,133 @@
+* {
+  font-family: Ubuntu Nerd Font;
+  font-weight: normal;
+  font-size: 14px;
+  min-height: 0;
+  /*color: #cdd6f4;*/
+}
+#window,
+#clock,
+#tray,
+#pulseaudio,
+#battery,
+#network,
+#workspaces,
+#custom-powermenu,
+#custom-spotify,
+#custom-colorpicker,
+#custom-hyprshot,
+#custom-arch {
+  background-color:  #1e1e2e;
+  margin-top: 2px;
+  margin-bottom: 0px;
+  padding: 3px;
+}
+#tray {
+border: 2px solid #9999CC;
+color: #cdd6f4;
+}
+#custom-arch {
+border: 2px solid #9999CC ;
+border-radius: 10px 10px 10px 10px;
+margin-left: 5px;
+padding-left: 10px;
+padding-right: 7px;
+color: #cdd6f4;
+}
+#custom-powermenu {
+border: 2px solid #9999CC ;
+border-radius: 10px 10px 10px 10px;
+margin-right: 5px;
+color: #cdd6f4;
+}
+#custom-colorpicker {
+  border-top: 2px solid #9999CC;
+  border-bottom: 2px solid #9999CC;
+  color: #cdd6f4;
+}
+#custom-hyprshot {
+  border-top: 2px solid #9999CC;
+  border-bottom: 2px solid #9999CC;
+  color: #cdd6f4;
+}
+#custom-spotify {
+margin-left: 3px ;
+border: 2px solid #9999CC ;
+border-radius: 10px 10px 10px 10px;
+color: #cdd6f4;
+}
+#workspaces {
+border: 2px solid #9999CC ;
+}
+#clock {
+border-right: 2px solid #9999CC;
+border-top: 2px solid #9999CC;
+border-bottom: 2px solid #9999CC;
+color: #cdd6f4;
+}
+#network {
+border-top: 2px solid #9999CC;
+border-bottom: 2px solid #9999CC;
+color: #cdd6f4;
+}
+#battery,
+#pulseaudio {
+border-top: 2px solid #9999CC;
+border-bottom: 2px solid #9999CC;
+color: #cdd6f4;
+}
+#battery {
+border-left: 2px solid #9999CC;
+border-radius: 10px 0px 0px 10px;
+}
+#tray {
+  border-radius: 10px 10px 10px 10px;  
+  margin-right: 3px;
+}
+#clock{
+    border-radius: 0px 10px 10px 0px}
+#clock {
+  font-weight: bold;
+  margin-right: 3px;
+}
+#window {
+font-weight: bold;
+border-radius: 10px 10px 10px 10px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#workspaces button {
+  /* color: gray ; */
+  padding: 1px;
+}
+#workspaces button.active {
+    color: #89b4fa;
+}
+
+/* #workspaces button.focused {
+    color: #89b4fa;
+  }
+*/
+#workspaces {
+   border-radius: 10px 10px 10px 10px;
+}
+button {
+  min-width: 16px;
+}
+window#waybar {
+  /* you can also GTK3 CSS functions! */
+  background-color: transparent;
+  border-radius: 10px 10px 10px 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+tooltip {
+  border-radius: 10px;
+  background-color: #1e1e2e;
+  border: solid 2px #9999CC;
+}
+
+tooltip label {
+  color: #9999CC;
+}
