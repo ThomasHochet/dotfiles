@@ -113,13 +113,21 @@
         "format-ethernet": " ",
         "format-disconnected": "睊",
         "tooltip-format": "{essid}",
-        "on-click": "kitty -e 'nmtui'",
-        "format-icons": ["󰤯 ","󰤟 ","󰤢 ","󰤢 ","󰤨 "],
+        "on-click": "nmcli dev wifi && kitty -e 'nmtui'",
+        "format-icons": ["󰤯 ","󰤟 ","󰤢 ","󰤢 ","󰤨 "]
     },
     "clock": {
         "format": "{:󰥔 %R} ",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
+    "cpu": {
+        "interval": 5,
+        "format": "",
+        "tooltip-format": " {usage}%"
     },
+    "memory": {
+        "interval": 5,
+        "format": ""
+    }
 }
 
