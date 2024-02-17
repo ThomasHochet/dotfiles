@@ -152,7 +152,7 @@ require('lazy').setup({
     },
   },
 
-  { 
+  {
     "nvim-tree/nvim-web-devicons",
       config = function()
         require('nvim-web-devicons').setup {
@@ -358,7 +358,32 @@ require('lazy').setup({
         desc = "Restore last session automatically"
       })
     end,
+  },
+
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+    -- add any options here
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      -- "rcarriga/nvim-notify",
+    }
+  },
+
+  {
+    "rcarriga/nvim-notify",
+    opts = {
+      background_colour = "#000000",
+    }
   }
+
+
 }, {})
 
 -- [[ Setting options ]]
@@ -716,6 +741,9 @@ cmp.setup {
       luasnip.lsp_expand(args.body)
     end,
   },
+  completion = {
+    completeopt = "menu,menuone,noinsert,noselect,preview"
+  },
   mapping = cmp.mapping.preset.insert {
     ['<C-n>'] = cmp.mapping.select_next_item(),
     ['<C-p>'] = cmp.mapping.select_prev_item(),
@@ -724,7 +752,7 @@ cmp.setup {
     ['<C-Space>'] = cmp.mapping.complete {},
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
+      select = false,
     },
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -750,6 +778,27 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+cmp.setup.cmdline('/', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+      {
+        name = 'cmdline',
+        options = {
+          ignore_cmds = { 'Man', '!' }
+        }
+      }
+    })
+})
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
