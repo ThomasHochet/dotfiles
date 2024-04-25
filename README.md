@@ -1,6 +1,6 @@
 # dotfiles
 
-[//]: # (![WM](./images/wm.png))
+<!-- # (![WM](./images/wm.png)) -->
 
 ## WM: [i3](https://i3wm.org/)
 Simple and effective window manager, easy to setup, easy to comprehend. Really loving it
@@ -22,7 +22,7 @@ Very barebone config for my personnal enjoyment.
 ## Notification
 [dunst](https://github.com/dunst-project/dunst)
 
-[//]: # (![menu](./images/rofi.png))
+<!-- # (![menu](./images/rofi.png)) -->
 
 ## Theme used: [Catppuccin](https://github.com/catppuccin/catppuccin)
 
