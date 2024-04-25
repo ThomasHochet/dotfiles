@@ -1,16 +1,16 @@
 # dotfiles
 
-![WM](./images/wm.png)
+[//]: # (![WM](./images/wm.png))
 
-## WM: [Hyprland](https://hyprland.org/)
-Tiling compositor window manager. With fancy looks and easy configuration while on wayland.
-Wallpaper is managed with hyprpaper.
+## WM: [i3](https://i3wm.org/)
+Simple and effective window manager, easy to setup, easy to comprehend. Really loving it
+Nitrogen is used for wallpaper.
 
-## Bar: [Waybar](https://github.com/Alexays/Waybar)
-Super easy bar to configure, with an easy way of styling. Can look great in itself and can be improved with tools like [eww](https://github.com/elkowar/eww) (not that I used it).
+## Bar: [i3status-rust](https://github.com/greshake/i3status-rust)
+Simple and effective, easy to setup (again). Recommended
 
 ## Terminal : [Kitty](https://sw.kovidgoyal.net/kitty/)
-Basic kitty terminal with fancy background opacity (coupled with hyprland background blur)
+Basic kitty terminal with a nice theme (see below)
 
 ## [Fish](https://fishshell.com/)
 Simple fish config with personnal aliases
@@ -20,20 +20,18 @@ Config started with [Kickstart](https://github.com/nvim-lua/kickstart.nvim) to l
 Very barebone config for my personnal enjoyment. 
 
 ## Notification
-- [mako](https://github.com/emersion/mako)
-- [rofi](https://github.com/davatorium/rofi)
+[dunst](https://github.com/dunst-project/dunst)
 
-## Powermenu, dmenu, hyprshotmenu, etc
-Made with [rofi](https://github.com/davatorium/rofi). A very simple and powerful tool.
-For powermenu, use [rofi-power-menu](https://github.com/jluttine/rofi-power-menu)
-
-![menu](./images/rofi.png)
-
-### Install local hyprshotmenu
-```
-chmod +x hyprshot/hyprshotmenu hyprshot/hyprshotmenu.sh
-sudo cp hyprshot/hyprshotmenu /usr/local/bin
-sudo chown {username} /usr/local/bin/hyprshotmenu
-```
+[//]: # (![menu](./images/rofi.png))
 
 ## Theme used: [Catppuccin](https://github.com/catppuccin/catppuccin)
+
+## Stowing my dotfiles
+Currently using [stow](https://www.gnu.org/software/stow/) to manage my dotfiles with this current folder/repository.
+Takes this folder for example :
+- Put it in your home directory (~/dotfiles)
+- use : ```stow .```
+- ```ls -lah ~/.config/i3```
+- the config file is then symlinked with the one inside the dotfiles folder.
+
+If you don't want your config files to be messed up but you still want to stow them, you can use ```--adopt``` command to get them inside the ```~/dotfiles``` folder and then symlink them. use ```man stow```
