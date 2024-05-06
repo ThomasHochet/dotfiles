@@ -5,5 +5,6 @@ if status is-interactive
     alias ll='exa -alh'
     alias r='ranger'
     pfetch
+    set -x -U GOPATH $HOME/go
 end
 fish_add_path /home/thash/.spicetify
